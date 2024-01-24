@@ -15,6 +15,8 @@
 */
 
 Route::get('/', function () {
+
+
     return view('welcome');
 });
 
@@ -24,9 +26,8 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::prefix('panel')->group(function () {
-        Route::get ('/', function () {
-            return view("panel/index");
-        })->name('panel.index');
+
+        Route::resource('home', App\Http\Controllers\HomeController::class);
 
         Fortify::loginView(function () {
             return view('panel/auth/login');
@@ -36,9 +37,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             return view('panel/auth/register');
         });
 
-        Route::get('/profile', function () {
-            return view('panel/profile/index');
-        })->name('panel.profile');
+        Route::resource('profile', App\Http\Controllers\ProfileController::class);
+
+
 
     });
 

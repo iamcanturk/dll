@@ -35,45 +35,43 @@
 						<div class="card  card-bx m-b30">
 							<div class="card-header">
 								<h4 class="card-title">Profil Bilgileri</h4>
+                                <a href="/panel/profile/{{auth()->user()->id}}/edit" class="btn btn-primary btn-sm">Profili Düzenle</a>
 							</div>
-							<form class="profile-form">
-								<div class="card-body">
+								<div class="profile-form card-body">
 									<div class="row">
 										<div class="col-sm-6 m-b30">
 											<label class="form-label">İsim</label>
-											<input type="text" class="form-control" value="John">
+											<input type="text" class="form-control" value="{{auth()->user()->name}}" disabled>
 										</div>
 										<div class="col-sm-6 m-b30">
 											<label class="form-label">Soyisim</label>
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" value="{{auth()->user()->surname}}" disabled>
 										</div>
 										<div class="col-sm-12 m-b30">
 											<label class="form-label">Firma Unvanı</label>
-											<input type="text" class="form-control" value="Developer">
+											<input type="text" class="form-control" value="{{auth()->user()->company}}" disabled>
 										</div>
 
 										<div class="col-sm-6 m-b30">
 											<div class="example">
 												<label class="form-label">Vergi Dairesi</label>
-												<input class="form-control " type="text" name="daterange" placeholder="2017-06-04" id="mdate">
+												<input class="form-control " type="text" name="daterange" value="{{auth()->user()->tax_office}}" id="mdate" disabled>
 											</div>
 										</div>
 										<div class="col-sm-6 m-b30">
 											<label class="form-label">Vergi Numarası</label>
-											<input type="text" class="form-control" value="+123456789">
+											<input type="text" class="form-control" value="{{auth()->user()->tax_number}}" disabled>
 										</div>
 										<div class="col-sm-6 m-b30">
 											<label class="form-label">Email</label>
-											<input type="text" class="form-control" value="demo@gmail.com">
+											<input type="text" class="form-control" value="{{auth()->user()->email}}" disabled>
 										</div>
                                         <div class="col-sm-6 m-b30">
 											<label class="form-label">Telefon</label>
-											<input type="text" class="form-control" value="demo@gmail.com">
+											<input type="text" class="form-control" value="{{auth()->user()->phone}}" disabled>
 										</div>
 									</div>
 								</div>
-
-							</form>
 						</div>
 					</div>
 				</div>

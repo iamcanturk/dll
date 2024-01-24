@@ -1,5 +1,5 @@
 <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="http://dexignzone.com/" target="_blank">DexignZone</a> 2022</p>
+                <p>Copyright ©  Developed by <a href="http://canturk.tech/" target="_blank">Can TÜRK</a> 2024</p>
             </div>
-        </div>
+        </div><?php
