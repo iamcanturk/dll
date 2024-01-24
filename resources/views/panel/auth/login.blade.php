@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="keywords" content="admin, dashboard" />
-	<meta name="author" content="DexignZone" />
-	<meta name="robots" content="index, follow" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="tixia : tixia School Admission Admin  Bootstrap 5 Template" />
-	<meta property="og:title" content="tixia : tixia School Admission Admin  Bootstrap 5 Template" />
-	<meta property="og:description" content="tixia : tixia School Admission Admin  Bootstrap 5 Template" />
-	<meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="admin, dashboard" />
+    <meta name="author" content="DexignZone" />
+    <meta name="robots" content="index, follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="tixia : tixia School Admission Admin  Bootstrap 5 Template" />
+    <meta property="og:title" content="tixia : tixia School Admission Admin  Bootstrap 5 Template" />
+    <meta property="og:description" content="tixia : tixia School Admission Admin  Bootstrap 5 Template" />
+    <meta name="format-detection" content="telephone=no">
     <title>Tixia - Bootstrap Admin Dashboard </title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png') }}">
@@ -28,37 +28,50 @@
                         <div class="row no-gutters">
                             <div class="col-xl-12">
                                 <div class="auth-form">
-									<div class="text-center mb-3">
-										<a href="index.html"><img src="{{ asset('assets/images/logo-full.png') }}" alt=""></a>
-									</div>
-                                    <h4 class="text-center mb-4">Sign in your account</h4>
-                                    <form action="index.html">
+                                    <div class="text-center mb-3">
+                                        <a href="index.html"><img src="{{ asset('logo.png') }}" alt="" width="200px"></a>
+                                    </div>
+                                    <h4 class="text-center mb-4">Giriş Yap</h4>
+                                    <form action="{{ route('login') }}" method="POST">
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        @endif
+                                        @csrf <!-- CSRF koruması için token -->
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Email</strong></label>
-                                            <input type="email" class="form-control" value="hello@example.com">
+                                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                                         </div>
                                         <div class="form-group">
-                                            <label class="mb-1"><strong>Password</strong></label>
-                                            <input type="password" class="form-control" value="Password">
+                                            <label class="mb-1"><strong>Parola</strong></label>
+                                            <input type="password" class="form-control" name="password">
                                         </div>
                                         <div class="form-row d-flex justify-content-between mt-4 mb-2">
                                             <div class="form-group">
-                                               <div class="form-check custom-checkbox ms-1">
-													<input type="checkbox" class="form-check-input" id="basic_checkbox_1">
-													<label class="form-check-label" for="basic_checkbox_1">Remember my preference</label>
-												</div>
+                                                <div class="form-check custom-checkbox ms-1">
+                                                    <input type="checkbox" class="form-check-input" id="basic_checkbox_1">
+                                                    <label class="form-check-label" for="basic_checkbox_1">Beni Hatırla</label>
+                                                </div>
                                             </div>
                                             <div class="form-group">
-                                                <a href="page-forgot-password.html">Forgot Password?</a>
+                                                <a href="page-forgot-password.html">Parolamı Unuttum?</a>
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
+                                            <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+                                        </div>
+                                        <div class="new-account mt-3">
+                                            <p>Hesabın mı yok? <a class="text-primary" href="{{ route('register') }}">Kayıt Ol</a></p>
                                         </div>
                                     </form>
-                                    <div class="new-account mt-3">
-                                        <p>Don't have an account? <a class="text-primary" href="page-register.html">Sign up</a></p>
-                                    </div>
+
+
+
                                 </div>
                             </div>
                         </div>

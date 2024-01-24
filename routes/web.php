@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+    use Laravel\Fortify\Fortify;
+    use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,28 @@ Route::get('/', function () {
 });
 
 
-Route::prefix('panel')->group(function () {
-    Route::get ('/login', function () {
-        return view("panel/auth/login");
-   });
+
+// a group of routes that are only accessible to authenticated users
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
+    Route::prefix('panel')->group(function () {
+        Route::get ('/', function () {
+            return view("panel/index");
+        })->name('panel.index');
+
+        Fortify::loginView(function () {
+            return view('panel/auth/login');
+        });
+
+        Fortify::registerView(function () {
+            return view('panel/auth/register');
+        });
+
+        Route::get('/profile', function () {
+            return view('panel/profile/index');
+        })->name('panel.profile');
+
+    });
+
 });
 
