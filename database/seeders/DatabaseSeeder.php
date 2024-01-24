@@ -4,6 +4,7 @@
 
     // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
     use App\Models\User;
+    use App\Models\Offer;
     use App\Models\Domain;
     use App\Models\Service;
     use Illuminate\Database\Seeder;
@@ -27,6 +28,8 @@
             Domain::factory()->create(['name' => 'test2.com', 'url' => 'https://test2.com', 'dns' => 'dnsdll.com,dns2dll.com', 'price' => '100', 'price_currency' => 'USD', 'status' => 'passive', 'description' => 'test2.com Açıklama', 'expired_date' => '2022-01-01 00:00:00', 'user_id' => '1',]);
             Domain::factory()->create(['name' => 'test3.com', 'url' => 'https://test3.com', 'dns' => 'dnsdll.com,dns2dll.com', 'price' => '150', 'price_currency' => 'EUR', 'status' => 'waiting_payment', 'description' => 'test3.com Açıklama', 'expired_date' => '2022-01-01 00:00:00', 'user_id' => '1',]);
 
+            Offer::factory()->create(['name' => 'Teklif 1', 'service_type' => 'domain', 'details' => 'Teklif 1 Açıklama', 'status' => 'active', 'user_id' => '1',]);
+            Offer::factory()->create(['name' => 'Teklif 2', 'service_type' => 'server', 'details' => 'Teklif 2 Açıklama', 'status' => 'passive', 'user_id' => '1',]);
 
         }
     }

@@ -33,6 +33,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
         Route::resource('domain', App\Http\Controllers\DomainController::class);
 
+        Route::resource('offer' , App\Http\Controllers\OfferController::class);
+
         Fortify::loginView(function () {
             return view('panel/auth/login');
         });

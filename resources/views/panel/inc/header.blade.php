@@ -132,6 +132,16 @@
 						</a>
 					</li>
 
+                    <li><a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
+							<i class="flaticon-381-id-card-4"></i>
+							<span class="nav-text">Teklif</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route('offer.index')}}">Teklif Listesi</a></li>
+                            <li><a href="{{ route('offer.create') }}">Teklif Al</a></li>
+                        </ul>
+                    </li>
+
 
 
                     <li><a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
