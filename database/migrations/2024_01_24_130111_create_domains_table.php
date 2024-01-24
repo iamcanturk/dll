@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('domains', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('disk')->nullable();
-            $table->string('ram')->nullable();
-            $table->string('cpu')->nullable();
-            $table->string('port')->nullable();
+            $table->string('url')->nullable();
+            $table->string('dns')->nullable();
             $table->string('price')->nullable();
             $table->enum('price_currency', ['TRY', 'USD','EUR'])->default('TRY');
             $table->enum('status', ['active', 'passive','waiting_payment'])->default('active');
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('domains');
     }
 };

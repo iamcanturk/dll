@@ -36,9 +36,9 @@
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-header flex-wrap">
-								  <h4 class="card-title">Hizmet Listesi</h4>
+								  <h4 class="card-title">Domain Listesi</h4>
 								  <a href="add-customers.html" class="btn btn-primary me-3 mt-2 mt-sm-0"><i
-                                          class="feather feather-user-plus"></i> Teklif Al</a>
+                                          class="feather feather-user-plus"></i> Domain Al</a>
 							 </div>
 							 <div class="card-body">
 								 <div class="table-responsive ticket-table ">
@@ -47,10 +47,9 @@
 										<thead>
 											<tr>
 												<th>Ürün Adı</th>
-												<th>Disk</th>
-                                                <th>Ram</th>
-                                                <th>CPU</th>
-                                                <th>Port</th>
+												<th>Domain</th>
+                                                <th>DNS 1</th>
+                                                <th>DNS 2</th>
                                                 <th>Fiyat (KDV Hariç)</th>
                                                 <th>Yenileme Tarihi</th>
                                                 <th>Durum</th>
@@ -58,44 +57,46 @@
 										</thead>
 										<tbody>
 
-                                         @foreach($services as $service)
+                                         @foreach($domains as $domain)
 
                                              <tr>
 												<td>
-                                                    {{$service->name}}
+                                                    {{$domain->name}}
 
 												</td>
 												<td>
-                                                    {{$service->disk}}
+                                                    {{$domain->url}}
                                                 </td>
 												<td>
-                                                    {{$service->ram}}
+                                                    {{
+                                                    explode(",", $domain->dns)[0]
+                                                    }}
                                                 </td>
+
                                                 <td>
-                                                    {{$service->cpu}}
-                                                </td>
-                                                <td>
-                                                    {{$service->port}}
+                                                    {{
+                                                    explode(",", $domain->dns)[1]
+                                                    }}
                                                 </td>
                                                 <td>
                                                     {{
-                                                   number_format($service->price, 2, ',', '.') }}
-                                                    @if($service->price_currency == "TRY")
+                                                   number_format($domain->price, 2, ',', '.') }}
+                                                    @if($domain->price_currency == "TRY")
                                                         ₺
-                                                    @elseif($service->price_currency == "USD")
+                                                    @elseif($domain->price_currency == "USD")
                                                         $
-                                                    @elseif($service->price_currency == "EUR")
+                                                    @elseif($domain->price_currency == "EUR")
                                                         €
                                                     @endif
                                                 </td>
-												<td>{{\Carbon\Carbon::parse($service->expired_date)->format('d/m/Y H:i:s')}}</td>
+												<td>{{\Carbon\Carbon::parse($domain->expired_date)->format('d/m/Y H:i:s')}}</td>
 
 												<td>
-                                                    @if($service->status == "active")
+                                                    @if($domain->status == "active")
                                                         <span class="badge badge-success">Aktif</span>
-                                                    @elseif($service->status == "passive")
+                                                    @elseif($domain->status == "passive")
                                                         <span class="badge badge-danger">Pasif</span>
-                                                    @elseif($service->status == "waiting_payment")
+                                                    @elseif($domain->status == "waiting_payment")
                                                         <span class="badge badge-warning">Ödeme Bekliyor</span>
                                                     @endif
 												</td>

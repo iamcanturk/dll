@@ -126,6 +126,13 @@
 						</a>
 					</li>
 
+                       <li><a href="{{route('domain.index')}}" class="ai-icon" aria-expanded="false">
+							<i class="flaticon-381-networking"></i>
+							<span class="nav-text">Domainlerim</span>
+						</a>
+					</li>
+
+
 
                     <li><a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
 							<i class="flaticon-381-id-card-4"></i>

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Domain extends Model
 {
     use HasFactory;
 
@@ -16,10 +16,8 @@ class Service extends Model
      */
     protected $fillable = [
         'name',
-        'disk',
-        'ram',
-        'cpu',
-        'port',
+        'url',
+        'dns',
         'price',
         'price_currency',
         'status',
