@@ -7,6 +7,7 @@
     use App\Models\Offer;
     use App\Models\Domain;
     use App\Models\Service;
+    use App\Models\Cabinet;
     use Illuminate\Database\Seeder;
 
     class DatabaseSeeder extends Seeder
@@ -31,5 +32,15 @@
             Offer::factory()->create(['name' => 'Teklif 1', 'service_type' => 'domain', 'details' => 'Teklif 1 Açıklama', 'status' => 'active', 'user_id' => '1',]);
             Offer::factory()->create(['name' => 'Teklif 2', 'service_type' => 'server', 'details' => 'Teklif 2 Açıklama', 'status' => 'passive', 'user_id' => '1',]);
 
-        }
+            Cabinet::factory()->create(['name' => 'Kabin 1', 'u_size' => '15U', 'internet' => '50 Mbps', 'uplink' => '1 Gbps', 'ip' => '29', 'anti_ddos' => 'yes', 'price' => '50', 'price_currency' => 'TRY', 'status' => 'active', 'description' => 'Kabin 1 Açıklama', 'expired_date' => '2022-01-01 00:00:00', 'user_id' => '1',]);
+
+            Cabinet::factory()->create(['name' => 'Kabin 2', 'u_size' => '23U', 'internet' => '100 Mbps', 'uplink' =>
+                '1 Gbps', 'ip' => '28', 'anti_ddos' => 'no', 'price' => '100', 'price_currency' => 'USD', 'status' =>
+                'passive', 'description' => 'Kabin 2 Açıklama', 'expired_date' => '2022-01-01 00:00:00', 'user_id' => '1',]);
+
+            Cabinet::factory()->create(['name' => 'Kabin 3', 'u_size' => '47U', 'internet' => '1 Gbps', 'uplink' =>
+                '10 Gbps', 'ip' => '27', 'anti_ddos' => 'yes', 'price' => '150', 'price_currency' => 'EUR', 'status'
+            => 'waiting_payment', 'description' => 'Kabin 3 Açıklama', 'expired_date' => '2022-01-01 00:00:00', 'user_id' => '1',]);
+
+            }
     }

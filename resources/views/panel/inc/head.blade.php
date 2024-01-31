@@ -17,3 +17,5 @@
 <link href="{{asset('assets/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
+<link href="{{asset('assets/vendor/toastr/css/toastr.min.css')}}" rel="stylesheet">
+

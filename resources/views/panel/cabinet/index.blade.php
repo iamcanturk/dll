@@ -36,10 +36,9 @@
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-header flex-wrap">
-								  <h4 class="card-title">Teklif Listesi</h4>
-								  <a href="{{route('offer.create')}}" class="btn btn-primary me-3 mt-2 mt-sm-0"><i
+								  <h4 class="card-title">Kabin Listesi</h4>
+								  <a href="add-customers.html" class="btn btn-primary me-3 mt-2 mt-sm-0"><i
                                           class="feather feather-user-plus"></i> Teklif Al</a>
-
 							 </div>
 							 <div class="card-body">
 								 <div class="table-responsive ticket-table ">
@@ -47,47 +46,63 @@
                                            style="min-width: 845px">
 										<thead>
 											<tr>
-												<th>Teklif Adı</th>
-												<th>Hizmet Türü</th>
+												<th>Ürün Adı</th>
+												<th>U</th>
+                                                <th>İnternet</th>
+                                                <th>Uplink</th>
+                                                <th>IP</th>
+                                                <th>Anti DDOS</th>
+                                                <th>Fiyat (KDV Hariç)</th>
+                                                <th>Yenileme Tarihi</th>
                                                 <th>Durum</th>
-                                                <th>Detay</th>
 											</tr>
 										</thead>
 										<tbody>
 
-                                         @foreach($offers as $offer)
+                                         @foreach($cabinets as $cabinet)
 
                                              <tr>
 												<td>
-                                                    {{$offer->name}}
+                                                    {{$cabinet->name}}
 
 												</td>
 												<td>
-                                                    @if($offer->service_type == "domain")
-                                                        Domain
-                                                    @elseif($offer->service_type == "server")
-                                                        Sunucu
-                                                    @elseif($offer->service_type == "location")
-                                                        Barındırma
-                                                    @elseif($offer->service_type == "other")
-                                                        Diğer
-                                                    @endif
+                                                    {{$cabinet->u_size}}
                                                 </td>
 												<td>
-                                                    @if($offer->status == "active")
+                                                    {{$cabinet->internet}}
+                                                </td>
+                                                <td>
+                                                    {{$cabinet->uplink}}
+                                                </td>
+                                                <td>
+                                                    {{$cabinet->ip}}
+                                                </td>
+                                                  <td>
+                                                    {{$cabinet->anti_ddos == 'yes' ? 'Evet' : 'Hayır'}}
+                                                </td>
+                                                <td>
+                                                    {{
+                                                   number_format($cabinet->price, 2, ',', '.') }}
+                                                    @if($cabinet->price_currency == "TRY")
+                                                        ₺
+                                                    @elseif($cabinet->price_currency == "USD")
+                                                        $
+                                                    @elseif($cabinet->price_currency == "EUR")
+                                                        €
+                                                    @endif
+                                                </td>
+												<td>{{\Carbon\Carbon::parse($cabinet->expired_date)->format('d/m/Y H:i:s')}}</td>
+
+												<td>
+                                                    @if($cabinet->status == "active")
                                                         <span class="badge badge-success">Aktif</span>
-                                                    @elseif($offer->status == "passive")
+                                                    @elseif($cabinet->status == "passive")
                                                         <span class="badge badge-danger">Pasif</span>
-                                                    @elseif($offer->status == "waiting_payment")
+                                                    @elseif($cabinet->status == "waiting_payment")
                                                         <span class="badge badge-warning">Ödeme Bekliyor</span>
                                                     @endif
 												</td>
-                                                <td>
-                                                    <a href="{{route('offer.show', $offer->id)}}" class="btn btn-primary btn-sm">Detay</a>
-                                                </td>
-
-
-
 											</tr>
                                          @endforeach
 										</tbody>
@@ -99,17 +114,6 @@
 				</div>
             </div>
         </div>
-
-        @if(isset($success)))
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    success();
-                }, false);
-            </script>
-        @endif
-
-
-
         <!--**********************************
             Content body end
         ***********************************-->

@@ -1,0 +1,69 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Cabinet;
+use Illuminate\Http\Request;
+
+class CabinetController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        // Get all cabinets for the current user
+        $cabinets = Cabinet::all()->where('user_id', auth()->user()->id);
+        $page_title = 'Kabinlerim';
+        return view('panel.cabinet.index', compact('cabinets'), compact('page_title'));
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Cabinet $cabinet)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Cabinet $cabinet)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Cabinet $cabinet)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Cabinet $cabinet)
+    {
+        //
+    }
+}

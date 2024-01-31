@@ -14,3 +14,5 @@
 <script src="{{asset('assets/js/plugins-init/datatables.init.js')}}"></script>
 <script src="{{asset('assets/js/custom.min.js')}}"></script>
 <script src="{{asset('assets/js/deznav-init.js')}}"></script>
+<script src="{{asset('assets/vendor/toastr/js/toastr.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins-init/toastr-init.js')}}"></script>

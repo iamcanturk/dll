@@ -126,6 +126,13 @@
 						</a>
 					</li>
 
+                     <li><a href="{{route('cabinet.index')}}" class="ai-icon" aria-expanded="false">
+							<i class="flaticon-381-networking"></i>
+							<span class="nav-text">Kabinlerim</span>
+						</a>
+					</li>
+
+
                        <li><a href="{{route('domain.index')}}" class="ai-icon" aria-expanded="false">
 							<i class="flaticon-381-networking"></i>
 							<span class="nav-text">Domainlerim</span>

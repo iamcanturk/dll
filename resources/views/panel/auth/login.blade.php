@@ -12,7 +12,7 @@
     <meta property="og:title" content="tixia : tixia School Admission Admin  Bootstrap 5 Template" />
     <meta property="og:description" content="tixia : tixia School Admission Admin  Bootstrap 5 Template" />
     <meta name="format-detection" content="telephone=no">
-    <title>Tixia - Bootstrap Admin Dashboard </title>
+    <title>DLL Teknoloji </title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png') }}">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
