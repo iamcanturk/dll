@@ -26,6 +26,7 @@ class User extends Authenticatable
         'tax_office',
         'email',
         'password',
+        'role',
     ];
 
     /**

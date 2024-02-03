@@ -47,7 +47,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
         Route::resource('profile', App\Http\Controllers\ProfileController::class);
 
-
+        Route::resource('user', App\Http\Controllers\UserController::class);
 
     });
 

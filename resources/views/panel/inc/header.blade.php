@@ -120,6 +120,13 @@
 						</a>
 					</li>
 
+                    @if(auth()->user()->role == "admin")
+                    <li><a href="{{route('user.index')}}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-networking"></i>
+                            <span class="nav-text">Kullanıcılar</span>
+                        </a>
+                    </li>
+                    @endif
                       <li><a href="{{route('service.index')}}" class="ai-icon" aria-expanded="false">
 							<i class="flaticon-381-networking"></i>
 							<span class="nav-text">Hizmetlerim</span>

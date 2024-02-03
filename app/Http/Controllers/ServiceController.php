@@ -12,7 +12,7 @@
          */
         public function index()
         {
-            $services = Service::all();
+            $services = Service::all()->where('user_id', auth()->id());
             $page_title = 'Hizmetlerim';
             return view('panel.service.index', compact('services'), compact('page_title'));
         }
