@@ -46,12 +46,13 @@
                                            style="min-width: 845px">
 										<thead>
 											<tr>
-                                                <th>Kullanıcı</th>
+												<th>Müşteri Adı</th>
 												<th>Ürün Adı</th>
-												<th>Disk</th>
-                                                <th>Ram</th>
-                                                <th>CPU</th>
-                                                <th>Port</th>
+                                                <th>U</th>
+                                                <th>İnternet</th>
+                                                <th>Uplink</th>
+                                                <th>IP</th>
+                                                <th>Anti DDOS</th>
                                                 <th>Fiyat (KDV Hariç)</th>
                                                 <th>Yenileme Tarihi</th>
                                                 <th>Durum</th>
@@ -60,61 +61,60 @@
 										</thead>
 										<tbody>
 
-                                         @foreach($services as $service)
+                                         @foreach($cabinets as $cabinet)
 
                                              <tr>
-                                                 <td>
-                                                     {{$service->user_name}} {{$service->surname}}
-                                                 </td>
 												<td>
-                                                    {{$service->name}}
-
+                                                    {{$cabinet->user_name}} {{$cabinet->surname}}
 												</td>
 												<td>
-                                                    {{$service->disk}}
+                                                    {{$cabinet->name}}
                                                 </td>
 												<td>
-                                                    {{$service->ram}}
+                                                    {{$cabinet->u_size}}
                                                 </td>
                                                 <td>
-                                                    {{$service->cpu}}
+                                                    {{$cabinet->internet}}
                                                 </td>
                                                 <td>
-                                                    {{$service->port}}
+                                                    {{$cabinet->uplink}}
+                                                </td>
+                                                  <td>
+                                                    {{$cabinet->ip}}
+                                                </td>
+                                                  <td>
+                                                    {{$cabinet->anti_ddos == "yes" ? "Var" : "Yok"}}
                                                 </td>
                                                 <td>
                                                     {{
-                                                   number_format($service->price, 2, ',', '.') }}
-                                                    @if($service->price_currency == "TRY")
+                                                   number_format($cabinet->price, 2, ',', '.') }}
+                                                    @if($cabinet->price_currency == "TRY")
                                                         ₺
-                                                    @elseif($service->price_currency == "USD")
+                                                    @elseif($cabinet->price_currency == "USD")
                                                         $
-                                                    @elseif($service->price_currency == "EUR")
+                                                    @elseif($cabinet->price_currency == "EUR")
                                                         €
                                                     @endif
                                                 </td>
-												<td>{{\Carbon\Carbon::parse($service->expired_date)->format('d/m/Y H:i:s')}}</td>
+												<td>{{\Carbon\Carbon::parse($cabinet->expired_date)->format('d/m/Y H:i:s')}}</td>
 
 												<td>
-                                                    @if($service->status == "active")
+                                                    @if($cabinet->status == "active")
                                                         <span class="badge badge-success">Aktif</span>
-                                                    @elseif($service->status == "passive")
+                                                    @elseif($cabinet->status == "passive")
                                                         <span class="badge badge-danger">Pasif</span>
-                                                    @elseif($service->status == "waiting_payment")
+                                                    @elseif($cabinet->status == "waiting_payment")
                                                         <span class="badge badge-warning">Ödeme Bekliyor</span>
                                                     @endif
 												</td>
-                                                                                                 <td>
-                                                    <div class="d-flex">
-                                                         <a href="{{route('all-services.edit', $service->id)}}" class="btn btn-primary btn-sm">Düzenle</a>
-
-                                                        <form action="{{route('all-services.destroy', $service->id)}}" method="POST" class="btn" style="padding: 0">
-                                                        @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm">Sil</button>
-                                                    </form>
-                                                    </div>
-                                                </td>
+                                                 <td>
+                                                    <a href="{{route('cabinet.edit', $cabinet->id)}}" class="btn btn-primary btn-sm">Düzenle</a>
+                                                     <form action="{{route('all-cabinets.destroy', $cabinet->id)}}" method="post" class="btn" style="padding: 0px">
+                                                         @csrf
+                                                         @method('DELETE')
+                                                         <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                                                        </form>
+                                                 </td>
 											</tr>
                                          @endforeach
 										</tbody>

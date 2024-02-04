@@ -46,7 +46,6 @@
                                            style="min-width: 845px">
 										<thead>
 											<tr>
-                                                <th>Kullanıcı</th>
 												<th>Ürün Adı</th>
 												<th>Disk</th>
                                                 <th>Ram</th>
@@ -55,7 +54,6 @@
                                                 <th>Fiyat (KDV Hariç)</th>
                                                 <th>Yenileme Tarihi</th>
                                                 <th>Durum</th>
-                                                <th>İşlemler</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -63,9 +61,6 @@
                                          @foreach($services as $service)
 
                                              <tr>
-                                                 <td>
-                                                     {{$service->user_name}} {{$service->surname}}
-                                                 </td>
 												<td>
                                                     {{$service->name}}
 
@@ -104,17 +99,6 @@
                                                         <span class="badge badge-warning">Ödeme Bekliyor</span>
                                                     @endif
 												</td>
-                                                                                                 <td>
-                                                    <div class="d-flex">
-                                                         <a href="{{route('all-services.edit', $service->id)}}" class="btn btn-primary btn-sm">Düzenle</a>
-
-                                                        <form action="{{route('all-services.destroy', $service->id)}}" method="POST" class="btn" style="padding: 0">
-                                                        @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm">Sil</button>
-                                                    </form>
-                                                    </div>
-                                                </td>
 											</tr>
                                          @endforeach
 										</tbody>

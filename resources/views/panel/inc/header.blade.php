@@ -126,6 +126,17 @@
                             <span class="nav-text">Kullanıcılar</span>
                         </a>
                     </li>
+                        <li><a href="{{route('all-services.index')}}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-networking"></i>
+                            <span class="nav-text">Hizmetler</span>
+                                </a>
+                            </li>
+
+                        <li><a href="{{route('all-cabinets.index')}}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-networking"></i>
+                            <span class="nav-text">Kabinler</span>
+                        </a>
+                    </li>
                     @endif
                       <li><a href="{{route('service.index')}}" class="ai-icon" aria-expanded="false">
 							<i class="flaticon-381-networking"></i>

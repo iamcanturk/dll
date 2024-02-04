@@ -49,6 +49,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
         Route::resource('user', App\Http\Controllers\UserController::class);
 
+        Route::resource('all-services', App\Http\Controllers\AllServicesController::class);
+
+        Route::resource('all-cabinets', App\Http\Controllers\AllCabinetsController::class);
+
     });
 
 });
